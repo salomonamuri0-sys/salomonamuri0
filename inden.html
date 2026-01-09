@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Clip Generator</title>
+</head>
+<body>
+    <h1>Video Clip Generator</h1>
+    <form id="videoForm">
+        <label for="videoUpload">Upload Video:</label>
+        <input type="file" id="videoUpload" accept="video/*"><br><br>
+
+
+        <label for="youtubeLink">Or paste YouTube Link:</label>
+        <input type="text" id="youtubeLink" placeholder="https://www.youtube.com/watch?v=..."><br><br>
+
+
+        <button type="submit">Generate Clip</button>
+    </form>
+
+
+    <div id="result"></div>
+
+
+    <script>
+        document.getElementById('videoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const videoFile = document.getElementById('videoUpload').files[0];
+            const youtubeLink = document.getElementById('youtubeLink').value;
+
+
+            if (videoFile) {
+                document.getElementById('result').innerText = `Video file "${videoFile.name}" uploaded.`;
+            } else if (youtubeLink) {
+                document.getElementById('result').innerText = `YouTube link "${youtubeLink}" received.`;
+            } else {
+                document.getElementById('result').innerText = 'Please upload a video or paste a YouTube link.';
+            }
+        });
+    </script>
+</body>
+</html>
